@@ -146,10 +146,11 @@ void A_input(struct pkt packet)
 /* called when A's timer goes off */
 void A_timerinterrupt(void)
 {
+    int i;
     if (TRACE > 0)
         printf("----A: timeout, resending all unACKed packets in window\n");
 
-    int i = base;
+     i = base;
     while (i != A_nextseqnum) {
         if (!acked[i]) {
             if (TRACE > 0)
